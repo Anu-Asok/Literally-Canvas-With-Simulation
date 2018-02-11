@@ -9,3 +9,4 @@ var config = {
 firebase.initializeApp(config);
 
 const dbRef = firebase.database().ref();
+const sgRef = firebase.storage().ref();

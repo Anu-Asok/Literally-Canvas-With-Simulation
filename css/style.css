@@ -13,3 +13,15 @@ body{
   right: 10px;
   z-index: 1;
 }
+
+#defaultCanvas0{
+  position: absolute;
+  top: 120px;
+  left: 200px;
+}
+
+.qs_main{
+  z-index: 9;
+  left: 87px;
+  top: 489px;
+}
