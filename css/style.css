@@ -5,3 +5,11 @@ body{
 .literally.toolbar-at-top{
   height: 100vh;
 }
+
+#simulations{
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  z-index: 1;
+}
