@@ -18,10 +18,25 @@ body{
   position: absolute;
   top: 120px;
   left: 200px;
+  border: 1px solid grey;
 }
 
 .qs_main{
-  z-index: 9;
+  z-index: 9 !important;
   left: 87px;
   top: 489px;
+}
+
+#drag{
+  position: absolute;
+  top: 5px;
+  right: 260px;
+  z-index: 1;
+}
+
+#interact{
+  position: absolute;
+  top: 5px;
+  right: 330px;
+  z-index: 1;
 }
