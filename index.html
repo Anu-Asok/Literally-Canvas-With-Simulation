@@ -15,15 +15,17 @@
     <!-- note: as of 0.4.13, you cannot use 'literally' as the class name.
          sorry about that. -->
          <div class="my-drawing"></div>
-         <div id="interact">
-           Interact <input type="checkbox" id="interactive" >
+         <div id="options">
+           <div id="interact">
+             Interact <input type="checkbox" id="interactive" >
+           </div>
+           <div id="drag">
+             Drag <input type="checkbox" id="draggable" value="false">
+           </div>
+           <select id="simulations">
+             <option value="">Select your simulation</option>
+           </select>
          </div>
-         <div id="drag">
-           Drag <input type="checkbox" id="draggable" value="false">
-         </div>
-         <select id="simulations">
-           <option value="">Select your simulation</option>
-         </select>
     <!-- kick it off -->
     <script>
       var lc = LC.init(

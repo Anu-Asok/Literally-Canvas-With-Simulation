@@ -6,14 +6,6 @@ body{
   height: 100vh;
 }
 
-#simulations{
-  display: none;
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  z-index: 1;
-}
-
 #defaultCanvas0{
   position: absolute;
   top: 120px;
@@ -27,16 +19,17 @@ body{
   top: 489px;
 }
 
-#drag{
-  position: absolute;
-  top: 5px;
-  right: 260px;
-  z-index: 1;
+#options > *{
+  display: inline-block;
 }
 
-#interact{
+#options{
   position: absolute;
-  top: 5px;
-  right: 330px;
   z-index: 1;
+  top: 1px;
+  right: 20px;
+}
+
+#simulations{
+  display: none;
 }

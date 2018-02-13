@@ -9,7 +9,7 @@ dbRef.child('simulations').once('value',function(snapshot){
     option.innerText = obj[key];
     simulations.appendChild(option);
   }
-  simulations.style.display = 'block';
+  simulations.style.display = 'inline-block';
 });
 
 simulations.addEventListener('change', function(){
