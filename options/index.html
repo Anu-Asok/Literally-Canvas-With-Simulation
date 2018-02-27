@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Get URL | Anybody Can Learn</title>
+  </head>
+  <body>
+    Options:
+    <select id="options">
+      <option value="">Select your choice</option>
+      <option value="create-folder">Create folder</option>
+      <option value="upload-image">Upload image</option>
+      <option value="upload-simulation">Upload simulation</option>
+    </select>
+    <div id="create-folder">
+      Enter the simulation name:
+      <input type="text" id="folder-name">
+      <hr>
+      <button type="button" id="create">Create</button>
+    </div>
+    <div id="upload-image">
+      <select id="select-simulation">
+        <option value="">Select the simulation: </option>
+      </select>
+      <input type="file" name="" value="">
+      <hr>
+      <button type="button" id="upload-image-btn">Get url</button>
+      <h4>URL: <span id="url"></span></h4>
+    </div>
+    <div id="upload-simulation">
+      <input type="file" name="" value="">
+      <hr>
+      <button type="button" id="upload-simulation-btn">Upload</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script src="/js/firebase-conf.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
