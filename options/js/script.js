@@ -29,7 +29,10 @@ function expandName(name){
 var create = document.getElementById('create');
 create.addEventListener('click', function(){
   var folderName = document.getElementById('folder-name').value;
-  dbRef.child('simulations/'+shrinkName(folderName)).set('Not Uploaded');
+  dbRef.child('simulations/'+shrinkName(folderName)).set('Not Uploaded').then(function(){
+    alert('Added!');
+    window.location.href = '/options';
+  });
 });
 
 var selectSimulationForImage = document.getElementById('select-simulation-for-image');
@@ -46,7 +49,34 @@ dbRef.child('simulations').orderByValue().equalTo('Not Uploaded').once('value', 
   selectSimulationForImage.innerHTML = selectSimulation.innerHTML;
 });
 
-var uploadImageBtn = document.getElementById('upload-image-btn');
-uploadImageBtn.addEventListener('click', function(event){
-  console.log(event.target);
+var simulationImage = document.getElementById('simulation-image');
+
+simulationImage.addEventListener('change', function(event){
+  var status = document.getElementById('status');
+  status.style.display = 'block';
+  var file = event.target.files[0];
+  var sg = sgRef.child('images/'+selectSimulationForImage.value+'/'+file.name);
+  sg.put(file).then(function(){
+    status.innerText = 'Generating URL';
+    sgRef.child('images/'+selectSimulationForImage.value+'/'+file.name).getDownloadURL().then(function(url){
+      status.innerText = 'Finished';
+      document.getElementById('url').innerText = url;
+    });
+  });
+});
+
+var simulationJS = document.getElementById('simulation-js');
+simulationJS.addEventListener('change', function(event){
+  var status = document.getElementById('upload-status');
+  status.innerText = 'Uploading...';
+  var file = event.target.files[0];
+  if (simulationJS.value)
+  var sg = sgRef.child('simulations/'+selectSimulationForImage.value+'/'+file.name);
+  sg.put(file).then(function(){
+    status.innerText = 'Generating URL';
+    sgRef.child('images/'+selectSimulationForImage.value+'/'+file.name).getDownloadURL().then(function(url){
+      status.innerText = 'Finished';
+      document.getElementById('url').innerText = url;
+    });
+  });
 });

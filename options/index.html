@@ -23,18 +23,20 @@
       <select id="select-simulation-for-image">
         <option value="">Loading...</option>
       </select>
-      <input type="file" name="" value="">
+      <input type="file" id="simulation-image" value="">
       <hr>
-      <button type="button" id="upload-image-btn">Get url</button>
+      <h3 id="status">Uploading...</h3>
+      <button type="button" id="get-url">Get url</button>
+      <hr>
       <h4>URL: <span id="url"></span></h4>
     </div>
     <div id="upload-simulation">
       <select id="select-simulation">
         <option value="">Loading...</option>
       </select>
-      <input type="file" name="" value="">
+      <input type="file" id="simulation-js" value="">
       <hr>
-      <button type="button" id="upload-simulation-btn">Upload</button>
+      <h3 id="upload-status"></h3>
     </div>
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="/js/firebase-conf.js"></script>
