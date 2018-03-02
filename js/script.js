@@ -3,6 +3,9 @@ var url = new URL(window.location.href);
 var simulation = url.searchParams.get('simulation');
 dbRef.child('simulations').once('value',function(snapshot){
   var obj = snapshot.val();
+  simulations.innerHTML=(
+    `<option value="">Select simulation</option>`
+  );
   for(key in obj){
     if (obj[key] == 'Not Uploaded')
       continue;
@@ -40,12 +43,16 @@ var setDrag = document.getElementById('draggable');
 setDrag.addEventListener('change',function(){
   var canvas = document.getElementsByTagName('canvas')[1];
   if(this.checked == false){
-    $('.ui-wrapper').draggable({disabled:true});
+    $('.ui-wrapper').draggable({disabled: true});
     if(setInteract.checked == false)
       canvas.style['pointer-events'] = 'unset';
   }
   else{
-    $('.ui-wrapper').draggable({disabled:false});
+    $('.ui-wrapper').draggable({
+      disabled:false,
+      containment: ".lc-drawing.with-gui",
+      cursor: "move"
+    });
     canvas.style['pointer-events'] = 'none';
   }
 });
@@ -63,3 +70,9 @@ setInteract.addEventListener('change', function(){
     canvas.style['pointer-events'] = 'none';
   }
 });
+
+window.onload = function(){
+  $('body').css({
+    'height': $(document).height()
+  });
+};

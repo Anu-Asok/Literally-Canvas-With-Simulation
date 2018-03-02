@@ -1,9 +1,18 @@
 body{
   margin: 0px;
+  width: 100vw;
 }
 
 .literally.toolbar-at-top{
-  height: 100vh;
+  height: 100%;
+}
+
+.lc-picker{
+  position: fixed;
+}
+
+.lc-options.horz-toolbar{
+  position: fixed;
 }
 
 #defaultCanvas0{
@@ -24,12 +33,8 @@ body{
 }
 
 #options{
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 1px;
   right: 20px;
-}
-
-#simulations{
-  display: none;
 }

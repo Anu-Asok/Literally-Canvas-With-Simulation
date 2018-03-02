@@ -17,13 +17,15 @@
          <div class="my-drawing"></div>
          <div id="options">
            <div id="interact">
-             Interact <input type="checkbox" id="interactive" >
+             <label for="interactive">Interact</label>
+             <input type="checkbox" id="interactive" >
            </div>
            <div id="drag">
-             Drag <input type="checkbox" id="draggable" value="false">
+             <label for="draggable">Drag</label>
+             <input type="checkbox" id="draggable" value="false">
            </div>
            <select id="simulations">
-             <option value="">Select your simulation</option>
+             <option value="">Loading...</option>
            </select>
          </div>
     <!-- kick it off -->
@@ -39,10 +41,12 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="/js/firebase-conf.js"></script>
     <script src="/js/p5.min.js"></script>
     <script src="/js/quicksettings.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quicksettings@latest/quicksettings.min.js"></script>
     <script src="/js/p5.gui.js"></script>
     <script src="/js/script.js"></script>
   </body>
