@@ -4,6 +4,8 @@ var simulation = url.searchParams.get('simulation');
 dbRef.child('simulations').once('value',function(snapshot){
   var obj = snapshot.val();
   for(key in obj){
+    if (obj[key] == 'Not Uploaded')
+      continue;
     var option = document.createElement('option');
     option.value = key;
     option.innerText = obj[key];
@@ -19,9 +21,11 @@ simulations.addEventListener('change', function(){
     });
 });
 
-var script = document.createElement('script');
-script.src = simulation;
-document.body.appendChild(script);
+if(simulation){
+  var script = document.createElement('script');
+  script.src = simulation;
+  document.body.appendChild(script);
+}
 
 var setResize = setInterval(function(){
    var canvas = document.getElementById('defaultCanvas0');

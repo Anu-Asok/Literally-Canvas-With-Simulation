@@ -28,10 +28,19 @@ function expandName(name){
 
 var create = document.getElementById('create');
 create.addEventListener('click', function(){
+  this.innerText = 'Creating...';
   var folderName = document.getElementById('folder-name').value;
-  dbRef.child('simulations/'+shrinkName(folderName)).set('Not Uploaded').then(function(){
-    alert('Added!');
-    window.location.href = '/options';
+  dbRef.child('simulations/').orderByKey().equalTo(shrinkName(folderName)).once('value', (snapshot) => {
+    if(!snapshot.val()){
+      dbRef.child('simulations/'+shrinkName(folderName)).set('Not Uploaded').then(()=>{
+        alert('Added!');
+        window.location.href = '/options';
+      });
+    }
+    else{
+      alert("Name already exists!");
+      this.innerText = 'Create';
+    }
   });
 });
 
@@ -57,7 +66,7 @@ simulationImage.addEventListener('change', function(event){
   var file = event.target.files[0];
   var sg = sgRef.child('images/'+selectSimulationForImage.value+'/'+file.name);
   sg.put(file).then(function(){
-    status.innerText = 'Generating URL';
+    status.innerText = 'Generating URL...';
     sgRef.child('images/'+selectSimulationForImage.value+'/'+file.name).getDownloadURL().then(function(url){
       status.innerText = 'Finished';
       document.getElementById('url').innerText = url;
@@ -68,15 +77,18 @@ simulationImage.addEventListener('change', function(event){
 var simulationJS = document.getElementById('simulation-js');
 simulationJS.addEventListener('change', function(event){
   var status = document.getElementById('upload-status');
-  status.innerText = 'Uploading...';
   var file = event.target.files[0];
-  if (simulationJS.value)
-  var sg = sgRef.child('simulations/'+selectSimulationForImage.value+'/'+file.name);
-  sg.put(file).then(function(){
-    status.innerText = 'Generating URL';
-    sgRef.child('images/'+selectSimulationForImage.value+'/'+file.name).getDownloadURL().then(function(url){
-      status.innerText = 'Finished';
-      document.getElementById('url').innerText = url;
+  if (file.name == selectSimulation.value+'.js'){
+    status.innerText = 'Uploading...';
+    var sg = sgRef.child('simulations/'+file.name);
+    sg.put(file).then(function(){
+      dbRef.child('simulations/'+selectSimulation.value).set(expandName(selectSimulation.value)).then(function(){
+        alert('Finished!');
+        window.location.href = '/options';
+      })
     });
-  });
+  }
+  else {
+    alert("Rename the file to "+selectSimulation.value+'.js');
+  }
 });
